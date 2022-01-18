@@ -24,7 +24,7 @@ Le jeu s'arrête si le restaurant est en faillite ou si au bout de N temps le ch
         - jambon fromage
         - rhum
     - faim : (faim + goût = bonus ?)
-        - +
+        - \+
         - ++
         - +++
     - avis général (ex : de 0 à 5)
