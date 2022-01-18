@@ -38,7 +38,7 @@ Le jeu s'arrête si le restaurant est en faillite ou si au bout de N temps le ch
     - ingredients :
         - aliment
         - quantité :
-            - +
+            - \+
             - ++
             - +++
 - aliment : 
