@@ -1,81 +1,46 @@
-class Personne {
-    constructor(nom, prenom, dateDeNaissance) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateDeNaissance = dateDeNaissance;
+class Client {
+    constructor(firstname, lastname, taste, hunger, wallet = 100) {
+        this.firstname  = firstname ;
+        this.lastname   = lastname ;
+        this.wallet     = wallet ;
+        this.taste      = taste ;
+        this.hunger     = hunger ;
+        this.avis       = undefined ; 
     }
 
-    getNom() {
-        console.log(`nom = ${this.nom}`);
+    getWallet() {
+        return this.wallet ;
     }
-    setNom(nom) {
-        this.nom = nom;
-    }
-
-    getPrenom() {
-        console.log(`prenom = ${this.prenom}`);
-    }
-    setPrenom(prenom) {
-        this.prenom = prenom;
+    setWallet(wallet) {
+        this.wallet = wallet ;
     }
 
-    getDateDeNaissance() {
-        console.log(`date de naissance = ${this.dateDeNaissance}`);
-    }
-    setDateDeNaissance(dateDeNaissance) {
-        this.dateDeNaissance = dateDeNaissance;
-    }
+
 }
 
-class Compte {
-    constructor(numero, solde, ligneDeCredit, titulaire) {
-        this.numero = numero;
-
-        if (solde < ligneDeCredit) {
-            this.solde = ligneDeCredit
-        } else {
-            this.solde = solde;
-        }
-        if (ligneDeCredit < 0) {
-            this.ligneDeCredit = 0;
-        } else {
-            this.ligneDeCredit = ligneDeCredit;
-        }
-
-        this.titulaire = titulaire;
+const foodItems = [
+    {
+        name : "sugar",
+        price : 0.2,
+    },
+    {
+        name : "brown sugar",
+        price : 0.3,
+    },
+    {
+        name : "chocolate",
+        price : 0.6,
+    },
+    {
+        name : "ham and cheese",
+        price : 0.8,
+    },
+    {
+        name : "fruits",
+        price : 1,
+    },
+    {
+        name : "rhum",
+        price : 1.2,
     }
-
-
-    getNumero() {
-        console.log(`numero = ${this.numero}`);
-    }
-    setNumero(numero) {
-        this.numero = numero;
-    }
-
-    getSolde() {
-        console.log(`solde = ${this.solde}`);
-    }
-    setSolde(solde) {
-        this.solde = solde;
-    }
-
-    getLigneDeCredit() {
-        console.log(`ligne de credit = ${this.ligneDeCredit}`);
-    }
-    setLigneDeCredit(ligneDeCredit) {
-        this.ligneDeCredit = ligneDeCredit;
-    }
-
-    getTitulaire() {
-        console.log(`titulaire = ${this.titulaire}`);
-    }
-    setTitulaire(titulaire) {
-        this.titulaire = titulaire;
-    }
-}
-
-let user = new Personne("Dut", "Gui", "31 aout 1993");
-let compte = new Compte(23, 200, 400, user);
-
-console.log(compte);
+];
