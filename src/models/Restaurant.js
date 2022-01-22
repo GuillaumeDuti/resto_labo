@@ -1,19 +1,39 @@
 export class Restaurant {
+    
+    #wallet
+    #rent
+    
     constructor(name, menu, wallet = 10000, rent = 2000) {
+
+        if(isNaN(wallet)) throw TypeError(`${wallet} n'est pas un nombre`)
+        if(isNaN(rent)) throw TypeError(`${rent} n'est pas un nombre`)
+        if(wallet < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+        if(rent < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+
         this.name       = name ;
-        this.wallet     = wallet ;
-        this.rent       = rent ;
+        this.#wallet    = wallet ;
+        this.#rent      = rent ;
         this.menu       = menu ;
     }
 
-    getName() {
+    get Name() {
         return this.name ; 
     }
 
-    getWallet() {
-        return this.wallet ;
+    get Wallet() {
+        return this.#wallet ;
     }
-    setWallet(wallet) {
-        this.wallet = wallet ;
+
+    moneyIn(value) {
+        if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
+        if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+        this.#wallet += value ; 
+    }
+
+    moneyOut(value) {
+        if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
+        if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+        if(this.#wallet < value) throw RangeError(`Impossible de retirer les ${value} € demandés. Le portefeuille restaurant ne contient que ${this.#wallet} €.`)
+        this.#wallet -= value ; 
     }
 }

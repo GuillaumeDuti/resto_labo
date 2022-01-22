@@ -2,16 +2,17 @@ export class Client {
     constructor(firstname, lastname, taste, hunger, wallet = 100) {
         this.firstname  = firstname ;
         this.lastname   = lastname ;
-        this.wallet     = wallet ;
+        this.Wallet     = wallet ;
         this.taste      = taste ;
         this.hunger     = hunger ;
         this.avis       = undefined ; 
     }
 
-    getWallet() {
+    get Wallet() {
         return this.wallet ;
     }
-    setWallet(wallet) {
-        this.wallet = wallet ;
+    set Wallet(value) {
+        if(value < 0) throw RangeError('Le portefeuille client ne peut être inférieur à 0')
+        this.wallet = value ;
     }
 }
