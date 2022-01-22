@@ -1,6 +1,7 @@
+import { Wallet } from "./Wallet.js";
+
 export class Restaurant {
     
-    #wallet
     #rent
     
     constructor(name, menu, wallet = 10000, rent = 2000) {
@@ -11,9 +12,10 @@ export class Restaurant {
         if(rent < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
 
         this.name       = name ;
-        this.#wallet    = wallet ;
-        this.#rent      = rent ;
         this.menu       = menu ;
+        this.wallet     = new Wallet(wallet, "restaurant");
+        // this.#wallet    = wallet ;
+        this.#rent      = rent ;
     }
 
     get Name() {
@@ -21,19 +23,19 @@ export class Restaurant {
     }
 
     get Wallet() {
-        return this.#wallet ;
+        return this.wallet.capital ;
     }
 
-    moneyIn(value) {
-        if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
-        if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
-        this.#wallet += value ; 
-    }
+    // moneyIn(value) {
+    //     if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
+    //     if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+    //     this.#wallet += value ; 
+    // }
 
-    moneyOut(value) {
-        if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
-        if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
-        if(this.#wallet < value) throw RangeError(`Impossible de retirer les ${value} € demandés. Le portefeuille restaurant ne contient que ${this.#wallet} €.`)
-        this.#wallet -= value ; 
-    }
+    // moneyOut(value) {
+    //     if(isNaN(value)) throw TypeError(`${value} n'est pas un nombre`)
+    //     if(value < 0) throw RangeError('Le portefeuille restaurant ne peut être inférieur à 0')
+    //     if(this.#wallet < value) throw RangeError(`Impossible de retirer les ${value} € demandés. Le portefeuille restaurant ne contient que ${this.#wallet} €.`)
+    //     this.#wallet -= value ; 
+    // }
 }
