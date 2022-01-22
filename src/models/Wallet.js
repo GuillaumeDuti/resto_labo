@@ -3,7 +3,7 @@ export class Wallet {
     #type;
     #numero;
     constructor(capital, type) {
-        this.#numero    = "BE"+this.randomNumber(14);
+        this.#numero    = "BE"+this.randomNumber();
         this.#capital   = capital;
         this.#type      = type;
     }
@@ -16,14 +16,17 @@ export class Wallet {
         return this.#numero
     }
 
-    randomNumber(iteration) {
-        let number = "";
-        for(let i = 0 ; i < iteration ; i++) {
-            // let random = 5;
-            let random = Math.round(Math.random() * 10).toString();
-            number += random;
-            // number = `${number}${random}`;
-        }
+    randomNumber() {
+        let min = 10000000000000;
+        let max = 99999999999999;
+        let number = Math.floor(Math.random() * (max - min + 1)) + min
+        // let number = "";
+        // for(let i = 0 ; i < iteration ; i++) {
+        //     // let random = 5;
+        //     let random = Math.round(Math.random() * 10).toString();
+        //     number += random;
+        //     // number = `${number}${random}`;
+        // }
         return number
     }
     
